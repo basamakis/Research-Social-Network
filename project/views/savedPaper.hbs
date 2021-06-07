@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="/research/css/style.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.google.com/icons?selected=Material%20Icons%20Sharp%3Asearch" rel="stylesheet">
+    <link href="https://fonts.google.com/icons?selected=Material%20Icons%20Outlined%3Amenu" rel="stylesheet">
+    <link href="https://fonts.google.com/icons?selected=Material%20Icons%20Outlined%3Aclose" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+
+    {{#each result}}
+    <h3 class="paperTitle"> <a href="/login/search/display/{{this.bDocumentID}}" style="text-decoration: none; color:black;">
+            {{this.name}}
+        </a>
+    </h3>
+    <div class="postContent">
+
+        <span class="pdf-icon"></span>
+
+        <div class="category">Category:<a href="/login/search/byCategory/{{this.bCategoryID}}">{{this.topic}}</a></div>
+
+        <div class="author">Authors:
+            {{#each this.authArr}}
+            <a href="#">{{this}}</a>
+            {{/each}}
+        </div>
+
+        <div class="paperControl">
+
+        </div>
+    </div>
+    <div class="givePadding"></div>
+    {{/each}}
+    </div>
+</body>
+
+</html>

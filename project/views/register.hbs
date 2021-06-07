@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="device-width, initial-scale=1.0">
+    <title>Research Social Network</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            font-family: sans-serif;
+        }
+
+
+        .container {
+            margin: auto;
+            width: 550px;
+            clear: both;
+        }
+
+        input {
+            width: 100%;
+            padding: 25px;
+            margin: 5px 5px 22px 5px;
+            border: none;
+            background: #f1f1f1;
+            border-radius: 10px;
+        }
+
+        .name {
+            width: 45%;
+        }
+
+        #lastName {
+            float: right;
+            margin-right: 0;
+        }
+
+        #terms {
+            display: inline-block;
+            margin-left: 5px;
+            text-align: left;
+            width: 60%;
+            font-size: 80%;
+        }
+
+        button {
+            text-align: center;
+            padding: 15px 32px;
+            width: 30%;
+            border: none;
+            background-color: rgb(34, 145, 34);
+            color: cornsilk;
+            float: right;
+
+        }
+
+
+        button:hover {
+            background-color: rgb(20, 99, 20);
+            /* Green */
+            cursor: pointer;
+            box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        }
+
+        .signin p {
+            text-align: center;
+        }
+
+
+        .hrdivider {
+            position: relative;
+            margin-bottom: 0px;
+            width: 100%;
+            text-align: center;
+        }
+
+        .hrdivider span {
+            position: absolute;
+            top: -10px;
+            background: #fff;
+            color: gray;
+            padding: 0;
+            padding-left: 10px;
+            padding-right: 10px;
+            font-size: 13px;
+        }
+        #message {
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+    <script>
+        var check = function () {
+            let but = document.getElementById('submitBut');
+            if (document.getElementById('password').value ==
+                document.getElementById('PasswordConfirm').value) {
+                document.getElementById('message').style.color = 'green';
+                document.getElementById('message').innerHTML = 'matching';
+                but.disabled = false;
+            } else {
+                document.getElementById('message').style.color = 'red';
+                document.getElementById('message').innerHTML = 'Passwords do not match';
+                but.disabled = true;
+            }
+            if (document.getElementById('password').value===''){
+                document.getElementById('message').style.display = 'none';
+            }
+            else{
+                document.getElementById('message').style.display = 'block';
+            }
+        }
+        console.log(check)
+    </script>
+    <form aling='center' action="/register" method="POST">
+        <div class="container">
+
+            <p>Please fill in this form to create an account.</p>
+            {{#if message}}
+                <h4 style="color: red">{{message}}</h4>
+            {{/if}}
+
+            <input type="text" placeholder="First Name" name="firstname" id="firstName" class="name" required>
+
+            <input type="text" placeholder="Last Name" name="lastname" id="lastName" class="name" required>
+
+            <input type="text" placeholder="Username" name="username" id="username" required>
+            <input type="text" placeholder="Email" name="email" id="email" required>
+
+            <input type="date" placeholder="Birthday" name="birthday" id="birthday" required>
+            <input type="password" placeholder="Password" name="password" id="password" onkeyup='check();'
+                pattern=".{8,}" required title="8 characters minimum" required>
+
+            <input type="password" placeholder="Confirm Password" name="PasswordConfirm" id="PasswordConfirm"
+                onkeyup='check();' required>
+
+            <span id='message' ></span>
+            <p id="terms">By creating an account you agree to our <a href="#">Terms & Privacy</a>.</p>
+            <button type="submit" class="registerbtn" id="submitBut">Sign Up</button>
+            <br>
+            <hr>
+        </div>
+        <div class="container signin">
+            <p>Already have an account? <a href="/">Sign in</a>.</p>
+        </div>
+    </form>
+
+
+</body>
+
+
+</html>

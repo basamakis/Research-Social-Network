@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile Page</title>
+    <link rel="stylesheet" href="/UserProfile/css/style.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
+        integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+            box-sizing: border-box;
+            font-family: sans-serif;
+        }
+
+
+        .docDetails {
+            position: relative;
+            min-height: 300px;
+            left: 20px;
+            max-width: 60%;
+        }
+
+        .docDetails h2 {
+            padding-top: 20px;
+        }
+
+        .author {
+            padding-top: 5px;
+            font-weight: bold;
+            font-size: 19px;
+        }
+
+
+
+        .author span {
+            font-weight: normal;
+        }
+
+        .abstract {
+            padding-top: 5px;
+            font-weight: bold;
+            font-size: 19px;
+        }
+
+        .abstract p {
+            padding-top: 5px;
+            font-weight: normal;
+            word-wrap: wrap;
+            font-size: 15px;
+        }
+
+        .pdfBox {
+            height: 700px;
+        }
+
+        .paperControl {
+            width: 100%;
+            text-align: center;
+            display: flex;
+            align-items: start;
+            justify-content: space-between;
+            position: relative;
+            left: 0px;
+
+        }
+    
+        .download {
+            text-align: center;
+            padding: 15px 32px;
+            width: 200px;
+            min-width: 150px;
+            border: none;
+            background-color: rgb(34, 145, 34);
+            color: cornsilk;
+            float: right;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+
+        .download:hover {
+            background-color: rgb(20, 99, 20);
+            /* Green */
+            cursor: pointer;
+            box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        }
+
+
+        .download:active {
+            background: #ccc;
+        }
+
+        .pdfFile {
+            width: 70%;
+            height: 95%;
+        }
+
+        a{
+            color:rgba(48, 41, 41, 0.575);
+        }
+    </style>
+</head>
+
+<body>
+    {{#each result}}
+    <div class="docDetails">
+        <h2>{{this.name}}</h2>
+        {{/each}}
+        <div class="author">Authors:
+            {{#each authors}}
+            <span><a href="#">{{this}}</a></span>
+            {{/each}}
+        </div>
+        {{#each result}}
+        <div class="author">Category:
+            <span><a href="/login/search/byCategory/{{this.bCategoryID}}">{{this.topic}}</a></span>
+        </div>
+        <div class="abstract">
+            Abstract:
+            <p>
+                {{this.abstract}}
+            </p>
+        </div>
+
+        <div class="paperControl">
+            <a href="/login/userProf/download/{{this.documentID}}" class="download" style="color:white">
+                <i class="fas fa-file-download"></i>
+                Download
+            </a>
+        {{/each}}
+        {{#if logged}}
+        {{#each result}}
+            <a href="/login/save/{{this.bDocumentID}}" class="download" style="color:white">
+                <i class="fas fa-save"></i>
+                Save to Library
+            </a>
+        {{/each}}
+        {{/if}}
+        </div>
+    </div>
+
+
+
+</body>
+
+</html>

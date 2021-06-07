@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="device-width, initial-scale=1.0">
+    <title>Research Social Network</title>
+    <link rel="stylesheet" type="text/css" href="/research/css/style.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.google.com/icons?selected=Material%20Icons%20Sharp%3Asearch" rel="stylesheet">
+    <link href="https://fonts.google.com/icons?selected=Material%20Icons%20Outlined%3Amenu" rel="stylesheet">
+    <link href="https://fonts.google.com/icons?selected=Material%20Icons%20Outlined%3Aclose" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+    <section class="sheader">
+        <nav>
+            <div class="nav-links" id="navLinks">
+                <div class="close-button" type="button" onclick="hideMenu()">
+                    <span class="material-icons" type="button">
+                        close
+                    </span>
+                </div>
+                <ul>
+                    {{#if logged}}
+                    <li><a href="/login">HOME</a></li>
+                    {{else}}
+                    <li><a href="/">HOME</a></li>
+                    {{/if}}
+
+                    {{#if logged}}
+                    <li><a href="/login/aboutUs">ABOUT US</a></li>
+                    {{else}}
+                    <li><a href="/aboutUs">ABOUT US</a></li>
+                    {{/if}}
+
+                    {{#if logged}}
+                    <li><a href="/login/categories">CATEGORIES</a></li>
+                    {{else}}
+                    <li><a href="/categories">CATEGORIES</a></li>
+                    {{/if}}
+
+                    {{#if logged}}
+                    <li><a href="#" id="user">PROFILE</a>
+                        <div id="myDropdown0" class='dropdown-content0'>
+                            <a href="/login/userProf">User <div class='view-prof'>view profile</div></a>
+                            <a href="/login/userProf/saved">Library</a>
+                            <a href="#">Settings</a>
+                            <a href="#">Help center</a>
+                            <a href="/logout" id="logout">Log out</a>
+                        </div>
+                    </li>
+                    {{else}}
+                    <li><button class="loginbtn" onclick="document.getElementById('id01').style.display='block'"
+                            style="width:auto;">LOGIN</button></li>
+                    {{/if}}
+                </ul>
+            </div>
+            <div class="menu-button" type="button" onclick="showMenu()">
+                <span class="material-icons" type="button">
+                    menu
+                </span>
+            </div>
+            {{#if logged}}
+            <form class="search-box" method="POST" action="/login/search">
+                <input class="search-text" type="search" placeholder="Type to search" name="search"
+                    style="position: relative; bottom: 300px;">
+                <button class="material-icons" type="submit"
+                    style="background: transparent; position: relative; bottom: 300px;">search</button>
+            </form>
+            {{else}}
+            <form class="search-box" method="POST" action="/search">
+                <input class="search-text" type="search" placeholder="Type to search" name="search"
+                    style="position: relative; bottom: 300px;">
+                <button class="material-icons" type="submit"
+                    style="background: transparent; position: relative; bottom: 300px;">search</button>
+            </form>
+            {{/if}}
+        </nav>
+
+    </section>
+
+    <section class="results">
+
+        <div class="posts">
+            {{#if noResults}}
+            <div class="noRes">
+                <h2> No Results Found</h2>
+            </div>
+            {{else}}
+            {{#if logged}}
+            {{#each result}}
+            <h3 class="paperTitle"> <a href="/login/search/display/{{this.bDocumentID}}"
+                    style="text-decoration: none; color:black;">
+                    {{this.name}}
+                </a>
+            </h3>
+            <div class="postContent">
+
+                <span class="pdf-icon"></span>
+
+                <div class="category">Category:<a href="/login/search/byCategory/{{this.bCategoryID}}">{{this.topic}}</a></div>
+
+                <div class="author">Authors:
+                    {{#each this.authArr}}
+                    <a href="#">{{this}}</a>
+                    {{/each}}
+                </div>
+
+                <div class="paperControl">
+                    <a href="/search/download/{{this.bDocumentID}}" class="download">Download</a>
+                    <a href="/login/save/{{this.bDocumentID}}" class="download">Save</a>
+
+                </div>
+            </div>
+            <div class="givePadding"></div>
+            {{/each}}
+            {{else}}
+            {{#each result}}
+            <h3 class="paperTitle"> <a href="/search/display/{{this.bDocumentID}}"
+                    style="text-decoration: none; color:black;">
+                    {{this.name}}
+                </a>
+            </h3>
+            <div class="postContent">
+
+                <span class="pdf-icon"></span>
+
+                <div class="category">Category:<a href="/search/byCategory/{{this.bCategoryID}}">{{this.topic}}</a></div>
+
+                <div class="author">Authors:
+                    {{#each this.authArr}}
+                    <a href="#">{{this}}</a>
+                    {{/each}}
+                </div>
+
+                <div class="paperControl">
+                    <a href="/search/download/{{this.bDocumentID}}" class="download">Download</a>
+
+                </div>
+            </div>
+            <div class="givePadding"></div>
+            {{/each}}
+            {{/if}}
+            {{/if}}
+        </div>
+
+    </section>
+
+
+    <!----find us----->
+    <section class="footer" style="margin-top: 400px;">
+        <h4>Contact Info</h4>
+        <p>For any information you need you can contact us at:
+            <br>
+            fotisbasamakis@gmail.com
+            <br>
+            or
+            <br>
+            nasiavai7@gmail.com
+        </p>
+        <div class="icons-co">
+            <i class="fa fa-facebook"></i>
+            <i class="fa fa-instagram"></i>
+            <i class="fa fa-twitter"></i>
+            <i class="fa fa-linkedin"></i>
+        </div>
+    </section>
+
+
+
+    <!---------login form---------->
+    <section>
+        <div id="id01" class="modal">
+            <form class="modal-content animate" action="/login" method="POST">
+                <div class="imgbanner">
+                    <span onclick="document.getElementById('id01').style.display='none'" class="close"
+                        title="Close Modal">&times;</span>
+                </div>
+
+                <div class="cnt">
+
+                    {{#if message}}
+                    <h4 style="color: red">{{message}}</h4>
+                    {{/if}}
+                    <label for="uname"><b>Username</b></label>
+                    <input type="text" placeholder="Enter Username" name="username" required>
+
+                    <label for="psw"><b>Password</b></label>
+                    <input type="password" placeholder="Enter Password" name="password" required>
+
+                    <button class="trial1" type="submit">Login</button>
+                    <label>
+                        <input type="checkbox" checked="checked" name="remember"> Remember me
+                    </label>
+                </div>
+
+                <div class="cnt" style="background-color:#f1f1f1">
+                    <button class="trial2" type="button" onclick="document.getElementById('id01').style.display='none'"
+                        class="cancelbtn">Cancel</button>
+                    <span class="psw">Forgot <a class="password-link" href="#">password?</a></span>
+                </div>
+            </form>
+        </div>
+    </section>
+
+
+
+    <!--------js for toggle menu------------>
+    <script>
+
+        const userBut = () => {
+            document.addEventListener("click", (evt) => {
+                const flyoutElement0 = document.getElementById("user");
+                let targetElement0 = evt.target; // clicked element
+
+                // console.log('kai edw eimai')
+
+                do {
+                    if (targetElement0 == flyoutElement0) {
+                        // Do nothing, just return.
+                        document.querySelector("#user").classList.toggle("focused0");
+                        document.getElementById("myDropdown0").classList.toggle("show0");
+                        return;
+                    }
+                    // Go up the DOM.
+                    targetElement0 = targetElement0.parentNode;
+                } while (targetElement0);
+
+                // Do something useful here.
+                document.getElementById("myDropdown0").classList.remove("show0");
+            });
+        }
+        userBut();
+        var navlinks = document.getElementById("navLiks");
+        function showMenu() {
+            navLinks.style.right = "0";
+        }
+        function hideMenu() {
+            navLinks.style.right = "-200px";
+        }
+
+
+        //-----login----
+
+
+        // Get the modal
+        var modal = document.getElementById('id01');
+
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function (event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+
+    </script>
+</body>
+
+</html>
