@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" />
+    <link rel="stylesheet" href="./style.css" />
+    <title>Document</title>
+    <style>
+        .containerUp {
+            position: relative;
+            top: 30px;
+            width: 100%;
+            font-family: sans-serif;
+
+
+        }
+
+        .title {
+
+            text-align: center;
+            color: rgb(56, 56, 54);
+        }
+
+        .butCont {
+            position: relative;
+            padding-top: 10%;
+        }
+
+
+        .file {
+            position: relative;
+            display: flex;
+            justify-content: space-around;
+        }
+
+
+        .file>input[type='file'] {
+            display: none
+        }
+
+        .file>label {
+            font-size: 1rem;
+            font-weight: 300;
+            cursor: pointer;
+            outline: 0;
+            user-select: none;
+            border-color: rgb(216, 216, 216) rgb(209, 209, 209) rgb(186, 186, 186);
+            border-style: solid;
+            border-radius: 4px;
+            border-width: 1px;
+            background-color: hsl(0, 0%, 100%);
+            color: hsl(0, 0%, 29%);
+            padding-left: 16px;
+            padding-right: 16px;
+            padding-top: 16px;
+            padding-bottom: 16px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .file>label:hover {
+            border-color: hsl(0, 0%, 21%);
+        }
+
+        .file>label:active {
+            background-color: hsl(0, 0%, 96%);
+        }
+
+        .file>label>i {
+            padding-right: 5px;
+        }
+
+        .file--upload>label {
+            color: hsl(133, 100%, 67%);
+            border-color: hsl(108, 100%, 67%);
+        }
+
+        .file--upload>label:hover {
+            border-color: hsl(125, 100%, 67%);
+            background-color: hsl(117, 100%, 96%);
+        }
+
+        .file--upload>label:active {
+            background-color: hsl(110, 100%, 91%);
+        }
+
+
+        /* Details for Upload papper */
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: 5% auto 15% auto;
+            /* 5% from the top, 15% from the bottom and centered */
+            border: 1px solid #888;
+            width: 40%;
+            /* Could be more or less, depending on screen size */
+            height: 47%;
+        }
+
+        input,
+        select {
+            width: 100%;
+            padding: 12px 20px;
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+        }
+
+        option {
+            font-size: 20px;
+        }
+
+        .but {
+            background-color: #04aa6d;
+            color: white;
+            padding: 14px 14px;
+            margin-top: 10px;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        .but:hover {
+            opacity: 0.8;
+        }
+
+        /* Change styles for span and cancel button on extra small screens */
+        @media screen and (max-width: 300px) {
+            span.psw {
+                display: block;
+                float: none;
+            }
+
+            .cancelbtn {
+                width: 100%;
+            }
+        }
+
+        .nContainer {
+            padding: 16px;
+        }
+
+        .textArea {
+            width: 100%;
+        }
+
+        .textArea textarea {
+            width: 100%;
+            resize: none;
+        }
+
+
+        @keyframes pulse {
+            0% {
+                color: hsl(118, 100%, 67%);
+            }
+
+            50% {
+                color: hsl(120, 100%, 38%);
+            }
+
+            100% {
+                color: hsl(123, 100%, 67%);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <form class="modal-content" method="POST" encType="multipart/form-data">
+        <div class="containerUp">
+            <div class="title">
+                <h2 class="title">Upload Papers</h2>
+            </div>
+
+            <div class='file file--upload' id="uploadPaper">
+                <label for='input-file'>
+                    <i class="fas fa-file"></i>Upload
+                </label>
+                <input id='input-file' type='file' name="sampleFile"
+                    accept="application/pdf, text/plain, application/msword" />
+            </div>
+        </div>
+        </div>
+        <br>
+        <br>
+        <div id="details">
+
+            <div class="nContainer">
+
+                <label for="name"><b>Name</b></label>
+                <input type="text" name="name" placeholder="Enter Name">
+                <br>
+                <label for="category"><b>Category</b></label>
+                <select name="category">
+                    <option>Biology</option>
+                    <option>Economics</option>
+                    <option>Engineering</option>
+                    <option>History</option>
+                    <option>Language</option>
+                    <option>Mathematics</option>
+                    <option>Politics</option>
+                    <option>Science</option>
+                    <option>Sociology</option>
+                </select>
+                <br>
+                <label for="address"><b>Abstract</b></label>
+                <div class="textArea"><textarea type="text" rows="10" cols="50" name="abstract"></textarea></div>
+                <br>
+                <label for="Author"><b>Authors</b>(separated by ,)</label>
+                <input type="text" name="authors" placeholder="Enter Authors">
+                <br>
+                <label for="Type"><b>Type</b></label>
+                <select name="type">
+                    <option>Thesis</option>
+                    <option>Paper</option>
+                    <option>Article</option>
+                </select>
+                <br>
+
+                <label for="publishedDat"><b>Publication Date</b></label>
+                <input type="date" placeholder="Published Date" name="publishedDate" required>
+                <button type="submit" class='but'>Submit</button>
+            </div>
+    </form>
+
+</body>
+
+</html>
