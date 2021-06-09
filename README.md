@@ -42,4 +42,4 @@ ________Features_____________________
 _______Support and Feedback_________
 
 If you have suggestions for future product releases or require technical support for your product, 
-e-mail to: fwtisbasamakis@gmail.com or .
+e-mail to: fwtisbasamakis@gmail.com or up1053742@upnet.gr.
