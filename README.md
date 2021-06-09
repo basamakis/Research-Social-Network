@@ -25,14 +25,15 @@ _Pre-requisites_
 	
 ________How to Run The Program__________
 
-1.Open terminal of your preference
+1.Open terminal of your preference.
 
-2.Go to the folder of (your_path)/project
-3. run the command npm install for installing the required modules from the package.jso
+2.Go to the folder of (your_path)/project.
 
-4. run the command node app.js or npm start to start the program
+3. run the command npm install for installing the required modules from the package.json.
 
-5. go to localhost:YOUR_PORT and start enjoying it
+4. run the command node app.js or npm start to start the program.
+
+5. go to localhost:YOUR_PORT and start enjoying it.
 
 ________Features_____________________
 
