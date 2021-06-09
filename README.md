@@ -28,7 +28,6 @@ ________How to Run The Program__________
 1.Open terminal of your preference
 
 2.Go to the folder of (your_path)/project
-
 3. run the command npm install for installing the required modules from the package.jso
 
 4. run the command node app.js or npm start to start the program
