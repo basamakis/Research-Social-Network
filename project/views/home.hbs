@@ -156,114 +156,93 @@
 
 
 
-    <!----find us----->
-    <section class="footer">
-        <h4>Contact Info</h4>
-        <p>For any information you need you can contact us at:
-            <br>
-            fotisbasamakis@gmail.com
-            <br>
-            or
-            <br>
-            nasiavai7@gmail.com
-        </p>
-        <div class="icons-co">
-            <i class="fa fa-facebook"></i>
-            <i class="fa fa-instagram"></i>
-            <i class="fa fa-twitter"></i>
-            <i class="fa fa-linkedin"></i>
-        </div>
-    </section>
-    <section>
 
 
+    <!---------login form---------->
 
-        <!---------login form---------->
-        <section>
-            <div id="id01" class="modal">
-                <form class="modal-content animate" action="/login" method="POST">
-                    <div class="imgbanner">
-                        <span onclick="document.getElementById('id01').style.display='none'" class="close"
-                            title="Close Modal">&times;</span>
-                    </div>
-
-                    <div class="cnt">
-
-                        {{#if message}}
-                        <h4 style="color: red">{{message}}</h4>
-                        {{/if}}
-                        <label for="uname"><b>Username</b></label>
-                        <input type="text" placeholder="Enter Username" name="username" required>
-
-                        <label for="psw"><b>Password</b></label>
-                        <input type="password" placeholder="Enter Password" name="password" required>
-
-                        <button class="trial1" type="submit">Login</button>
-                        <label>
-                            <input type="checkbox" checked="checked" name="remember"> Remember me
-                        </label>
-                    </div>
-
-                    <div class="cnt" style="background-color:#f1f1f1">
-                        <button class="trial2" type="button"
-                            onclick="document.getElementById('id01').style.display='none'"
-                            class="cancelbtn">Cancel</button>
-                        <span class="psw">Forgot <a class="password-link" href="#">password?</a></span>
-                    </div>
-                </form>
+    <div id="id01" class="modal">
+        <form class="modal-content animate" action="/login" method="POST">
+            <div class="imgbanner">
+                <span onclick="document.getElementById('id01').style.display='none'" class="close"
+                    title="Close Modal">&times;</span>
             </div>
-        </section>
+
+            <div class="cnt">
+
+                {{#if message}}
+                <h4 style="color: red">{{message}}</h4>
+                {{/if}}
+                <label for="uname"><b>Username</b></label>
+                <input type="text" placeholder="Enter Username" name="username" required>
+
+                <label for="psw"><b>Password</b></label>
+                <input type="password" placeholder="Enter Password" name="password" required>
+
+                <button class="trial1" type="submit">Login</button>
+                <label>
+                    <input type="checkbox" checked="checked" name="remember"> Remember me
+                </label>
+            </div>
+
+            <div class="cnt" style="background-color:#f1f1f1">
+                <button class="trial2" type="button" onclick="document.getElementById('id01').style.display='none'"
+                    class="cancelbtn">Cancel</button>
+                <span class="psw">Forgot <a class="password-link" href="#">password?</a></span>
+            </div>
+        </form>
+    </div>
 
 
-        <!--------js for toggle menu------------>
-        <script>
 
-            const userBut = () => {
-                document.addEventListener("click", (evt) => {
-                    const flyoutElement0 = document.getElementById("user");
-                    let targetElement0 = evt.target; // clicked element
+    <!--------js for toggle menu------------>
+    <script>
 
-                    // console.log('kai edw eimai')
+        const userBut = () => {
+            document.addEventListener("click", (evt) => {
+                const flyoutElement0 = document.getElementById("user");
+                let targetElement0 = evt.target; // clicked element
 
-                    do {
-                        if (targetElement0 == flyoutElement0) {
-                            // Do nothing, just return.
-                            document.querySelector("#user").classList.toggle("focused0");
-                            document.getElementById("myDropdown0").classList.toggle("show0");
-                            return;
-                        }
-                        // Go up the DOM.
-                        targetElement0 = targetElement0.parentNode;
-                    } while (targetElement0);
+                // console.log('kai edw eimai')
 
-                    // Do something useful here.
-                    document.getElementById("myDropdown0").classList.remove("show0");
-                });
+                do {
+                    if (targetElement0 == flyoutElement0) {
+                        // Do nothing, just return.
+                        document.querySelector("#user").classList.toggle("focused0");
+                        document.getElementById("myDropdown0").classList.toggle("show0");
+                        return;
+                    }
+                    // Go up the DOM.
+                    targetElement0 = targetElement0.parentNode;
+                } while (targetElement0);
+
+                // Do something useful here.
+                document.getElementById("myDropdown0").classList.remove("show0");
+            });
+        }
+        userBut();
+        var navlinks = document.getElementById("navLiks");
+        function showMenu() {
+            navLinks.style.right = "0";
+        }
+        function hideMenu() {
+            navLinks.style.right = "-200px";
+        }
+
+
+        //-----login----
+
+
+        // Get the modal
+        var modal = document.getElementById('id01');
+
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function (event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
             }
-            userBut();
-            var navlinks = document.getElementById("navLiks");
-            function showMenu() {
-                navLinks.style.right = "0";
-            }
-            function hideMenu() {
-                navLinks.style.right = "-200px";
-            }
+        }
 
-
-            //-----login----
-
-
-            // Get the modal
-            var modal = document.getElementById('id01');
-
-            // When the user clicks anywhere outside of the modal, close it
-            window.onclick = function (event) {
-                if (event.target == modal) {
-                    modal.style.display = "none";
-                }
-            }
-
-        </script>
+    </script>
 </body>
 
 </html>
