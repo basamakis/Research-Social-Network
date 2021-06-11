@@ -46,17 +46,13 @@
                         {{this.education}}
                         {{/if}}
                     </p>
-                    <p class="interests">
-                        <i class="fas fa-tag"></i>
-                        Computer Vision
-                    </p>
                     <p class="address">
                         <i class="fa fa-map-marker"></i>
-                        <span class="address">{{this.address}}, </span>
+                        <span class="address">{{this.address}}</span>
                         <br>
-                        <span class="country">{{this.country}}, </span>
+                        <span class="country">{{this.country}} </span>
                         <br>
-                        <span class="city">{{this.city}}, </span>
+                        <span class="city">{{this.city}} </span>
                     </p>
                     <p class="email">
                         <i class="fas fa-envelope" aria-hidden="true"></i>
@@ -72,6 +68,11 @@
                         <span class="more">... <a href="#" class="more-a">see more</a></span>
                         <a href="#" class="less">see less</a>
                     </div>
+                    <p class="interests">
+                        <b>Total Documents:</b>
+                        <span>{{this.user_documents}}</span>
+                    </p>
+                    <br>
                     <div class="follow">
                         <a class="followers" href="#">0 Followers</a>
                         <a class="following" href="#">0 Following</a>
@@ -93,8 +94,7 @@
                         </span>
                         <div id="myDropdown1" class='dropdown-content'>
                             <a id="but1" style="width:auto;">Name</a>
-                            <a id="but2">Affiliations</a>
-                            <a href="#">Research Interests</a>
+                            <a id="but2">Education</a>
                             <a id="but4" style="width:auto;">Biography</a>
                             <a id="but5" style="width:auto;">Contact Details</a>
                             <a id="but6">Working Place</a>
@@ -116,7 +116,7 @@
                 </form>
             </div>
 
-            <div id="id01" class="modal">
+            <div id="id001" class="modal">
                 <form class="modal-content animate" action='/login/userProf/name' method="POST"
                     encType="multipart/form-data">
                     <div class="nContainer">
@@ -195,7 +195,8 @@
                     {{#each ../result}}
                     <div class="postContent">
                         <span class="pdf-icon"></span>
-                        <h3 class="paperTitle"> <a href="/login/userProf/display/{{this.adDocumentID}}" style="text-decoration: none; color:black;">
+                        <h3 class="paperTitle"> <a href="/login/userProf/display/{{this.adDocumentID}}"
+                                style="text-decoration: none; color:black;">
                                 {{this.name}}
                             </a>
                         </h3>

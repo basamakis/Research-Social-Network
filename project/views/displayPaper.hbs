@@ -54,7 +54,7 @@
             word-wrap: wrap;
             font-size: 14px;
             border-left: 5px solid rgb(12, 119, 206);
-            background:rgba(12, 119, 206,0.3);
+            background: rgba(12, 119, 206, 0.3);
             border-radius: 5px;
         }
 
@@ -62,14 +62,12 @@
             width: 100%;
             text-align: center;
             display: flex;
-            align-items: start;
             justify-content: space-between;
             position: relative;
             left: 0px;
-            padding-top:20px;
-
+            padding-top: 20px;
         }
-    
+
         .download {
             text-align: center;
             padding: 15px 32px;
@@ -81,6 +79,7 @@
             float: right;
             text-decoration: none;
             border-radius: 5px;
+            white-space: nowrap;
         }
 
         .download:hover {
@@ -100,8 +99,8 @@
             height: 95%;
         }
 
-        a{
-            color:rgba(48, 41, 41, 0.575);
+        a {
+            color: rgba(48, 41, 41, 0.575);
         }
     </style>
 </head>
@@ -120,6 +119,11 @@
         <div class="author">Category:
             <span><a href="/login/search/byCategory/{{this.bCategoryID}}">{{this.topic}}</a></span>
         </div>
+        {{/each}}
+        <div class="author">Published:
+            <span>{{pdate}}</span>
+        </div>
+        {{#each result}}
         <div class="abstract">
             Abstract:
             <div class="abstract-text">
@@ -132,15 +136,15 @@
                 <i class="fas fa-file-download"></i>
                 Download
             </a>
-        {{/each}}
-        {{#if logged}}
-        {{#each result}}
+            {{/each}}
+            {{#if logged}}
+            {{#each result}}
             <a href="/login/save/{{this.bDocumentID}}" class="download" style="color:white">
                 <i class="fas fa-save"></i>
-                Save to Library
+                Save
             </a>
-        {{/each}}
-        {{/if}}
+            {{/each}}
+            {{/if}}
         </div>
     </div>
 

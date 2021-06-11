@@ -135,9 +135,7 @@ exports.updateCommunicationPoints = (req, res, pool) => {
     let country = req.body.country
     let phone = req.body.phone
     let email = req.body.email
-    console.log(address, city, country, phone, email)
     const token = req.user;
-    console.log(token)
     pool.getConnection((err, connection) => {
         if (err) throw err;
 
@@ -305,6 +303,15 @@ exports.uploadDoc = (req, res, pool) => {
                             console.log(err)
                         }
                     });
+
+                    connection.query(`UPDATE USER SET user_documents = user_documents + 1 WHERE userID = '${token.id}'`, (err, result) => {
+                        if (!err) {
+                            console.log('continue')
+                        } else {
+                            console.log(err)
+                        }
+                    });
+
                     connection.query(`UPDATE CATEGORY SET total_documents = total_documents + 1 WHERE topic = '${category}'`, (err, result) => {
                         if (!err) {
                             console.log('continue')
@@ -444,8 +451,13 @@ exports.displayDoc = (req, res, pool) => {
             //release the connection once done
             connection.release();
             let authors = result[0].authNames.split(',');
+            let pyear = result[0].date.getFullYear();
+            let pmonth = result[0].date.getMonth();
+            let pday = result[0].date.getDate();
+            let pdate = new String();
+            pdate = `0${pday} - ${pmonth+1} - ${pyear}  `
             if (!err) {
-                res.render('displayPaper', { layout: 'layout.hbs', result, logged:true , authors })
+                res.render('displayPaper', { layout: 'layout.hbs', result, logged:true , authors, pdate })
             } else {
                 console.log(err)
             }
@@ -482,13 +494,11 @@ exports.displaySavedDoc = (req, res, pool)=>{
         JOIN CATEGORY ON bCategoryID=categoryID
         JOIN SAVES ON bDocumentID = sDocumentID  
         and sUserID =${token.id}`, (err, result) => {
-            console.log(result)
             connection.release();
             let authors;
             result.forEach((element1) => {
                 element1.authArr = new Array();
                 authors = element1.authNames.split(',');
-                console.log(element1.authNames);
                 authors.forEach((element2) => {
                     element1.authArr.push(element2)
                 })

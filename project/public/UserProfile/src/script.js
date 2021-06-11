@@ -58,7 +58,7 @@ const showModal = () => {
 
 
     let modal0 = document.getElementById('id00');
-    let modal1 = document.getElementById('id01');
+    let modal1 = document.getElementById('id001');
     let modal2 = document.getElementById('id02');
     let modal3 = document.getElementById('id03');
     let modal4 = document.getElementById('id04');
@@ -67,8 +67,8 @@ const showModal = () => {
 
     window.onclick = function (event) {
         if (event.target === but1) {
-            document.getElementById('id01').style.display = "block";
-            document.getElementById('id01').firstElementChild.style.height = "240px";
+            document.getElementById('id001').style.display = "block";
+            document.getElementById('id001').firstElementChild.style.height = "240px";
         }
         else if (event.target === but2) {
             document.getElementById('id02').style.display = "block";
@@ -96,7 +96,7 @@ const showModal = () => {
         }
 
 
-        if (event.target === id01) {
+        if (event.target === id001) {
             modal1.style.display = "none";
         }
         else if (event.target === modal2) {

@@ -20,7 +20,9 @@
             font-family: "Nunito", sans-serif;
         }
 
-
+        .show-small {
+            display: none;
+        }
 
         .header {
             width: 100%;
@@ -192,6 +194,8 @@
             display: none;
         }
 
+
+
         @media screen and (max-width: 1024px) {
             .search-bar {
                 position: relative;
@@ -202,12 +206,33 @@
             .search-bar input {
                 width: 75%;
             }
+
+            .nav-links {
+                display: flex;
+                justify-content: start;
+            }
         }
 
-        @media (max-width: 768px) {
+        @media (max-width: 680px) {
+            .no-show {
+                display: none;
+            }
+
+            .show-small {
+                display: block;
+            }
+
+            nav {
+                display: flex;
+                justify-content: start;
+            }
+
+            .nav-links {
+                display: block;
+            }
+
             .search-bar {
-                left: 5%;
-                width: 40%;
+                width: 60%;
                 float: left;
             }
 
@@ -224,9 +249,9 @@
                 background-image: linear-gradient(rgba(4, 9, 30, 0.7), rgba(4, 9, 30, 0.7)),
                     url(/research/images/ban3.jpg);
                 height: 100vh;
-                width: 200px;
+                width: 30%;
                 top: 0;
-                right: -200px;
+                right: -30%;
                 text-align: left;
                 z-index: 2;
                 transition: 1s;
@@ -435,7 +460,6 @@
         .show0 {
             display: block;
         }
-
     </style>
 </head>
 
@@ -485,7 +509,7 @@
                     {{/if}}
 
                     {{#if logged}}
-                    <li><a href="#" id="user">PROFILE</a>
+                    <li class="no-show"><a href="#" id="user" class="no-show">PROFILE</a>
                         <div id="myDropdown0" class='dropdown-content0'>
                             <a href="/login/userProf">User <div class='view-prof'>view profile</div></a>
                             <a href="/login/userProf/saved">Library</a>
@@ -494,6 +518,14 @@
                             <a href="/logout" id="logout">Log out</a>
                         </div>
                     </li>
+                    <div class="show-small">
+                        <li><a href="/login/userProf">USER</a></li>
+                        <li><a href="/login/userProf/saved">LIBRARY</a></li>
+                        <li><a href="#">SETTINGS</a></li>
+                        <li><a href="#">HELP CENTER</a></li>
+                        <li><a href="/logout" id="logout">LOGOUT</a></li>
+                    </div>
+
                     {{else}}
                     <li><button class="loginbtn" onclick="document.getElementById('id01').style.display='block'"
                             style="width:auto;">LOGIN</button></li>
@@ -528,9 +560,9 @@
 
                     <button class="trial1" type="submit">Login</button>
                 </div>
-                    <span class="psw">Forgot <a class="password-link" href="#">password?</a></span>
-                </div>
-            </form>
+                <span class="psw">Forgot <a class="password-link" href="#">password?</a></span>
+        </div>
+        </form>
         </div>
     </section>
 

@@ -77,12 +77,17 @@ exports.displayDoc = (req, res, pool, checkLog) => {
             //release the connection once done
             connection.release();
             let authors = result[0].authNames.split(',');
+            let pyear = result[0].date.getFullYear();
+            let pmonth = result[0].date.getMonth();
+            let pday = result[0].date.getDate();
+            let pdate = new String();
+            pdate = `0${pday} - ${pmonth+1} - ${pyear}  `
             if (!err) {
                 if (checkLog) {
-                    res.render('displayPaper', { layout: 'layout.hbs', result, logged: true, authors })
+                    res.render('displayPaper', { layout: 'layout.hbs', result, logged: true, authors,pdate })
                 }
                 else {
-                    res.render('displayPaper', { layout: 'layout.hbs', result, authors })
+                    res.render('displayPaper', { layout: 'layout.hbs', result, authors,pdate })
                 }
             } else {
                 console.log(err)

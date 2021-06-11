@@ -358,13 +358,14 @@ img {
 }
 
 .paperControl {
-  left: 15%;
-  position: absolute;
-  display:flex;
-  justify-content: start;
+  width: 100%;
+  text-align: center;
+  display: flex;
   align-items: start;
-  bottom: 8%;
-  width: 30%;
+  justify-content: start;
+  position: relative;
+  left: 30px;
+  padding-top:20px;
   
 }
 
@@ -372,8 +373,7 @@ img {
   font-size: 18px;
   text-decoration: none;
   cursor: pointer;
-  padding-left: 4px;
-  padding-right: 4px;
+  padding-right: 20px;
   color: rgba(6, 66, 177, 0.973);
   font-weight: bold;
 

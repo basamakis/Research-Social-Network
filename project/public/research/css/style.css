@@ -182,6 +182,34 @@ nav .menu-button {
   display: none;
 }
 
+.show-small {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .no-show {
+    display: none;
+  }
+  .show-small {
+    display: block;
+  }
+  nav ul {
+    text-align: center;
+  }
+  .search-box {
+    position: absolute;
+    background: transparent;
+    margin-top: 50px;
+    width: 70%;
+  }
+  .search-box:hover {
+    position: absolute;
+    background: transparent;
+    margin-top: 50px;
+    width: 70%;
+  }
+}
+
 @media (max-width: 500px) {
   .search-box {
     position: absolute;
@@ -202,13 +230,15 @@ nav .menu-button {
   .nav-links {
     position: absolute;
     background: rgb(119, 119, 119, 0.1);
-    height: 40vh;
+    height: 70vh;
     width: 200px;
     top: 0;
     right: -200px;
     text-align: left;
     z-index: 2;
     transition: 1s;
+    background-image: linear-gradient(rgba(4, 9, 30, 0.7), rgba(4, 9, 30, 0.7)),
+    url(../images/ban3.jpg);
   }
 
   nav .menu-button {
@@ -325,6 +355,14 @@ h1 {
   opacity: 1;
 }
 
+@media (max-width: 768px) {
+  .row {
+    display: flex;
+    flex-direction: column;
+    margin-left: auto;
+  }
+}
+
 @media (max-width: 500px) {
   .row {
     display: flex;
@@ -378,6 +416,17 @@ h1 {
 
 .reg-btn:hover {
   color: white;
+}
+
+@media (max-width: 768px) {
+  .reg {
+    position: relative;
+    margin: 100px;
+    margin-left: auto;
+  }
+  .reg h2 {
+    font-size: 18px;
+  }
 }
 
 @media (max-width: 500px) {
@@ -491,6 +540,28 @@ h1 {
   cursor: pointer;
   padding: 18px 0;
 }
+
+@media (max-width: 768px) { 
+  .about-row {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    margin-left: auto;
+  }
+  .about-col img {
+    width: 400px;
+    height: 200px;
+    position: relative;
+    bottom: 300px;
+    margin-bottom: 50px;
+  }
+  .afooter {
+    position: relative;
+    display: flexbox;
+    top: 500px;
+  }
+}
+
 
 @media (max-width: 500px) {
   .about-row {
@@ -732,6 +803,15 @@ span.psw {
 .cat-layer:hover h3 {
   bottom: 49%;
   opacity: 0;
+}
+
+
+@media (max-width: 768px) {
+  .cat-row {
+    display: flex;
+    flex-direction: column;
+    margin: 30px;
+  }
 }
 
 @media (max-width: 500px) {

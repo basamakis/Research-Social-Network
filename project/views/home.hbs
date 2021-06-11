@@ -43,7 +43,7 @@
                     {{/if}}
 
                     {{#if logged}}
-                    <li><a href="#" id="user">PROFILE</a>
+                    <li class="no-show"><a href="#" id="user" class="no-show">PROFILE</a>
                         <div id="myDropdown0" class='dropdown-content0'>
                             <a href="/login/userProf">User <div class='view-prof'>view profile</div></a>
                             <a href="/login/userProf/saved">Library</a>
@@ -52,6 +52,14 @@
                             <a href="/logout" id="logout">Log out</a>
                         </div>
                     </li>
+                    <div class="show-small">
+                        <li class="show-small"><a href="/login/userProf">USER</a></li>
+                        <li class="show-small"><a href="/login/userProf/saved">LIBRARY</a></li>
+                        <li class="show-small"><a href="#">SETTINGS</a></li>
+                        <li class="show-small"><a href="#">HELP CENTER</a></li>
+                        <li class="show-small"><a href="/logout" id="logout">LOGOUT</a></li>
+                    </div>
+
                     {{else}}
                     <li><button class="loginbtn" onclick="document.getElementById('id01').style.display='block'"
                             style="width:auto;">LOGIN</button></li>
